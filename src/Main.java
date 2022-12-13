@@ -1,4 +1,13 @@
 public class Main {
+
+    /*
+        Use the following methods:
+            .length()
+            .substring(start, finish) doesn't include finish
+            .substring(start) goes to the end
+            .indexOf(someString)
+            someString.equals(otherString)
+     */
     public static void main(String[] args) {
         System.out.println(VowelCount("This is a string."));
         System.out.println("Correct output: 4");
@@ -13,12 +22,20 @@ public class Main {
     }
 
     /**
-     * Count the vowels in the input string regardless of case
+     * Count the vowels (a, e, i, o, u) in the input string regardless of case
      * @param input String
      * @return vowel count int
      */
     public static int VowelCount(String input){
-
+        int length = input.length();
+        String lowerCaseInput = input.toLowerCase();
+        int count = 0;
+        for(int i = 0; i < length; i++){
+            String letter = lowerCaseInput.substring(i, i+1);
+            if(letter.equals("a") || letter.equals("e") || letter.equals("i") || letter.equals("o") || letter.equals("u")){
+                count++;
+            }
+        }
         return -1;
     }
 
@@ -28,9 +45,13 @@ public class Main {
      * @return String with no vowels
      */
     public static String VowelRemover(String input){
+        String original = "Remove all of the vowels";
+        String newString = original.replaceAll("[aeiouAEIOU]", "");
+        return newString;
+        }
 
-        return "";
-    }
+
+
 
     /**
      * Determine if a substring target is contained in a given string
@@ -39,8 +60,13 @@ public class Main {
      * @return true if target found, false otherwise
      */
     public static boolean ContainsSubstring(String input, String target){
+        if (input.indexOf(target) >=0){
+            return true;
+        }
+        else {
+            return false;
+        }
 
-        return false;
     }
 
     /**
