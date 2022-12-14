@@ -15,8 +15,8 @@ public class Main {
         System.out.println("Correct output: Rmv ll f th vwls");
         System.out.println(ContainsSubstring("Sentence","ten"));
         System.out.println("Correct output: true");
-        System.out.println(ReverseString("ABCDEF"));
-        System.out.println("Correct output: FEDCBA");
+        System.out.println(ReverseString("racecar"));
+        System.out.println("Correct output: racecar");
         System.out.println(PalindromeChecker("level"));
         System.out.println("Correct output: true");
     }
@@ -59,15 +59,24 @@ public class Main {
      * @param target - String being looked for
      * @return true if target found, false otherwise
      */
-    public static boolean ContainsSubstring(String input, String target){
-        if (input.indexOf(target) >=0){
-            return true;
+    public static boolean ContainsSubstring(String input, String target) {
+        int inputLength = input.length();
+        int targetLength = target.length();
+        int maxLength = inputLength - targetLength;
+        for (int i = 0; i <= maxLength; i++) {
+            String currentPortion = input.substring(i, i + targetLength);
+            if (currentPortion.equals(target)) {
+                return true;
+            }
         }
-        else {
-            return false;
-        }
-
+        return false;
     }
+
+
+
+
+
+
 
     /**
      * Reverses a given string
@@ -75,8 +84,13 @@ public class Main {
      * @return reversed input String
      */
     public static String ReverseString(String input){
-
-        return "";
+        String output = "";
+        int inputLength = input.length();
+        for (int i = inputLength - 1; i >=0; i--){
+            char reverse = input.charAt(i);
+            output = output + reverse;
+        }
+        return output;
     }
 
     /**
@@ -85,7 +99,6 @@ public class Main {
      * @return true if given string is a palindrome, false otherwise
      */
     public static boolean PalindromeChecker(String input){
-
-        return false;
+        return input.equals(ReverseString(input));
     }
 }
